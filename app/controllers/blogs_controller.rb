@@ -8,7 +8,7 @@ def index
   end
 
   def create
-    @blog_post = Blog.new(params.require(:blog).permit(:title, :body, :author, :subject, :year))
+    @blog_post = Blog.new(params.require(:blog).permit(:title, :body))
 
     respond_to do |format|
       if @blog_post.save
@@ -27,7 +27,7 @@ def index
     @blog_post = Blog.find(params[:id])
 
     respond_to do |format| 
-      if @blog_post.update(params.require(:blog).permit(:title, :body, :author, :subject, :year))
+      if @blog_post.update(params.require(:blog).permit(:title, :body))
         format.html { redirect_to blogs_path, notice: 'Blog was successfully updated' }
       else
         format.html {render :edit }
